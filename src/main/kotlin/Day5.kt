@@ -43,7 +43,7 @@ private fun solutionPart2() {
 
 }
 
-fun moveCrateVersion2(text: String, listOfCrates: MutableList<MutableList<String>>) {
+private fun moveCrateVersion2(text: String, listOfCrates: MutableList<MutableList<String>>) {
     val moveText = text.split(" ")
     val cratesToMove = moveText[1].toInt()
     val from = moveText[3].toInt() -1
@@ -55,7 +55,7 @@ fun moveCrateVersion2(text: String, listOfCrates: MutableList<MutableList<String
     }
 }
 
-fun moveCrate(text: String, listOfCrates: MutableList<MutableList<String>>) {
+private fun moveCrate(text: String, listOfCrates: MutableList<MutableList<String>>) {
     val moveText = text.split(" ")
     val cratesToMove = moveText[1].toInt()
     val from = moveText[3].toInt() -1
