@@ -1,38 +1,40 @@
 import java.io.File
-import java.util.*
 
 fun main(args: Array<String>) {
-    solution()
+    val result = solutionPart1()
+    solutionPart2(result)
 }
 
-private fun solution() {
+private fun solutionPart1(): MutableMap<String, Long> {
     val directories = mutableMapOf<String, Long>()
-    var dirStack = mutableListOf<String>()
+    var allPaths = mutableListOf<String>()
     File("inputData/Input7.txt").forEachLine { text ->
-//        if (text.startsWith("dir")) {
-//            val directoryRow = text.split(" ")
-//            dirStack.add(directoryRow[1])
-//        }
-        if (text.startsWith("$ cd /")) {
-            dirStack.add("root")
-        }
-        else if (text.startsWith("$ cd ..")) {
-            dirStack = dirStack.dropLast(1).toMutableList()
-        } else if (text.startsWith("$ cd ")) {
-            val goIntoDirectory = text.split(" ")
-            dirStack.add(goIntoDirectory[2] + " " + UUID.randomUUID().toString())
-        } else if (text[0].isDigit()) {
-            val fileRow = text.split(" ")
-            dirStack.forEach{
-                directories[it] = (directories[it] ?: 0) + fileRow[0].toLong()
+
+        when {
+            text.startsWith("$ cd /") -> allPaths.add("/")
+            text.startsWith("$ cd ..") -> allPaths = allPaths.dropLast(1).toMutableList()
+            text.startsWith("$ cd ") -> {
+                val goIntoDirectory = text.split(" ")
+                val fullPath = allPaths.last() + goIntoDirectory[2] + "/"
+                allPaths.add(fullPath)
+            }
+            text[0].isDigit() -> {
+                val fileRow = text.split(" ")
+                allPaths.forEach {
+                    directories[it] = (directories[it] ?: 0) + fileRow[0].toLong()
+                }
             }
         }
     }
+    return directories
+}
+
+private fun solutionPart2(directories: MutableMap<String, Long>) {
     var count = 0L
     directories.forEach { (key, value) -> if (value <= 100000L) count += value}
     println("Part1. Sum is: $count")
 
-    val usedSpace = directories["root"] ?: 0L
+    val usedSpace = directories["/"] ?: 0L
     val fullSpace = 70000000L
     val neededSpace = 30000000L
     val emptySpace = fullSpace - usedSpace
