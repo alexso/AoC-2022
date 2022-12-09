@@ -5,21 +5,21 @@ fun main(args: Array<String>) {
     solutionPart2()
 }
 
-var isDebug = false
+private var isDebug = false
 
-val shouldPrintMap = isDebug
-val seeVisitedPlaces = false
-var arraySize = if (isDebug) 50 else 1000
-val inputFile = if (isDebug) "inputData/Input9Example.txt" else "inputData/Input9.txt"
+private val shouldPrintMap = isDebug
+private val seeVisitedPlaces = false
+private var arraySize = if (isDebug) 50 else 1000
+private val inputFile = if (isDebug) "inputData/Input9Example.txt" else "inputData/Input9.txt"
 
-val array = Array(arraySize) { CharArray(arraySize) }
-var head = Pair(array.size/2,array.size/2)
-var tail = Pair(array.size/2,array.size/2)
-var tails = mutableListOf<Pair<Int,Int>>()
-var count = 0
-var tailLength = 0
+private val array = Array(arraySize) { CharArray(arraySize) }
+private var head = Pair(array.size/2,array.size/2)
+private var tail = Pair(array.size/2,array.size/2)
+private var tails = mutableListOf<Pair<Int,Int>>()
+private var count = 0
+private var tailLength = 0
 
-val visitedSpots = mutableSetOf<Pair<Int,Int>>()
+private val visitedSpots = mutableSetOf<Pair<Int,Int>>()
 
 private fun solutionPart1() {
     clearMap()
@@ -124,7 +124,7 @@ private fun moveHeadDown(steps: Int) {
     }
 }
 
-fun isAdjacent(first: Pair<Int,Int>, second: Pair<Int,Int>): Boolean {
+private fun isAdjacent(first: Pair<Int,Int>, second: Pair<Int,Int>): Boolean {
     var isAdjacent = true
     if (first.first < second.first -1 || first.first > second.first +1) {
         isAdjacent = false
