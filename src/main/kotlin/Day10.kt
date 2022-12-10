@@ -8,7 +8,7 @@ fun main(args: Array<String>) {
     solutionPart2()
 }
 
-var cyclesToCheck = listOf(20, 60, 100, 140, 180, 220)
+private var cyclesToCheck = listOf(20, 60, 100, 140, 180, 220)
 
 private fun solutionPart1() {
     val signals = mutableListOf<Pair<Pair<Int,Int>,Int>>()

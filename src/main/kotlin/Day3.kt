@@ -56,7 +56,7 @@ private fun solutionPart2() {
     println("Total badge sum: $prioritySum")
 }
 
-fun findCommonItemFor(line1: String, line2: String, line3: String): Char {
+private fun findCommonItemFor(line1: String, line2: String, line3: String): Char {
     line1.forEach {
         if (line2.contains(it) && line3.contains(it)) return it
     }

@@ -14,7 +14,7 @@ private fun solutionPart2() {
     println("Part 2 - needed length is: ${inputData.charsNeededToFirstUniqueSequence(14)}")
 }
 
-fun String.charsNeededToFirstUniqueSequence(uniqueLength: Int): Int {
+private fun String.charsNeededToFirstUniqueSequence(uniqueLength: Int): Int {
     var newString: String = ""
     this.forEach {
         newString += it
@@ -28,7 +28,7 @@ fun String.charsNeededToFirstUniqueSequence(uniqueLength: Int): Int {
     return newString.count()
 }
 
-fun String.allUnique(): Boolean {
+private fun String.allUnique(): Boolean {
     val set = mutableSetOf<Char>()
     set.addAll(this.asSequence())
     return set.size == this.length

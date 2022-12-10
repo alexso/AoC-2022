@@ -16,7 +16,6 @@ private val array = Array(arraySize) { CharArray(arraySize) }
 private var head = Pair(array.size/2,array.size/2)
 private var tail = Pair(array.size/2,array.size/2)
 private var tails = mutableListOf<Pair<Int,Int>>()
-private var count = 0
 private var tailLength = 0
 
 private val visitedSpots = mutableSetOf<Pair<Int,Int>>()
